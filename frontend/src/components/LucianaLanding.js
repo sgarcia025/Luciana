@@ -279,7 +279,7 @@ Gracias.`;
                   </ul>
                   <Button 
                     className={`w-full mt-6 ${plan.featured ? 'bg-white text-primary hover:bg-opacity-90' : 'btn-primary'}`}
-                    onClick={() => document.querySelector('#contact-form').scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => handlePlanRequest(plan.name)}
                   >
                     Solicitar Plan {plan.name}
                   </Button>
