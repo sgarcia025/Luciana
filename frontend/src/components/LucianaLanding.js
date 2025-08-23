@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
-import { Bot, BarChart3, Zap, ShoppingBag, Link, Check, X, MessageCircle, Phone, Mail } from 'lucide-react';
+import { Bot, BarChart3, Zap, ShoppingBag, Link, Check, X, MessageCircle, Mail, TrendingUp } from 'lucide-react';
 
 const LucianaLanding = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +33,7 @@ Interés en: ${service}
 
 ¿Podrían agendar una demo?`;
     
-    const whatsappURL = `https://wa.me/50245678901?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/50232251075?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
   };
 
@@ -105,7 +104,8 @@ Interés en: ${service}
         "Integración con APIs externas",
         "Hasta 3 números de WhatsApp",
         "CRM Inteligente"
-      ]
+      ],
+      featured: true
     },
     premium: {
       name: "Premium",
@@ -138,14 +138,17 @@ Interés en: ${service}
       {/* Header */}
       <header className="header-nav">
         <div className="container flex items-center justify-between">
-          <img 
-            src="https://customer-assets.emergentagent.com/job_1e6338fa-b7e3-4bb7-9032-e8677dac9b3c/artifacts/u7i7fifj_5134DEC3-6D1F-4F67-BC95-15CABCEDF35B.png" 
-            alt="Luciana AI" 
-            className="logo h-10 w-auto"
-          />
+          <div className="flex items-center">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_1e6338fa-b7e3-4bb7-9032-e8677dac9b3c/artifacts/u7i7fifj_5134DEC3-6D1F-4F67-BC95-15CABCEDF35B.png" 
+              alt="Luciana AI" 
+              className="logo"
+            />
+          </div>
           <div className="nav-actions">
-            <Button className="btn-secondary">Iniciar Sesión</Button>
-            <Button className="btn-primary">Solicita tu Demo</Button>
+            <Button className="btn-primary">
+              Solicita tu Demo
+            </Button>
           </div>
         </div>
       </header>
@@ -153,45 +156,54 @@ Interés en: ${service}
       {/* Hero Section */}
       <section className="hero-section">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
           style={{
             backgroundImage: 'url("https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwyfHxBSSUyMGJ1c2luZXNzJTIwYXV0b21hdGlvbnxlbnwwfHx8fDE3NTU5OTIyMDJ8MA&ixlib=rb-4.1.0&q=85")'
           }}
         />
-        <div className="hero-content relative z-10">
-          <div className="hero-announcement">
+        <div className="hero-content">
+          <div className="hero-announcement fade-in-up">
             <Bot className="w-4 h-4" />
             <span>IA Conversacional Avanzada</span>
           </div>
-          <h1 className="hero-title heading-hero">
+          <h1 className="hero-title heading-hero fade-in-up stagger-1">
             Automatiza, responde y convierte con Luciana AI
           </h1>
-          <p className="hero-subtitle body-large text-text-secondary">
+          <p className="hero-subtitle body-large fade-in-up stagger-2">
             La plataforma conversacional más completa para ventas, atención y análisis en tiempo real desde WhatsApp
           </p>
-          <Button className="btn-primary text-lg px-8 py-4">
-            Solicita tu demo
-          </Button>
+          <div className="fade-in-up stagger-3">
+            <Button 
+              className="btn-primary text-lg px-8 py-4"
+              onClick={() => document.querySelector('#contact-form').scrollIntoView({ behavior: 'smooth' })}
+            >
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Solicita tu demo
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="pad-2xl bg-bg-section">
+      <section className="pad-2xl bg-section">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="heading-1 mb-4">¿Por qué Luciana AI?</h2>
+            <p className="body-large text-secondary max-w-2xl mx-auto">
+              Descubre las funcionalidades que transformarán tu negocio
+            </p>
           </div>
-          <div className="voice-grid">
+          <div className="benefits-grid">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="voice-card hover-lift">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-accent-purple-200 flex items-center justify-center mr-4">
-                      <benefit.icon className="w-6 h-6 text-accent-purple-400" />
+              <Card key={index} className="luciana-card hover-lift">
+                <CardContent className="p-0">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="feature-icon mb-4">
+                      <benefit.icon className="w-full h-full" />
                     </div>
-                    <h3 className="heading-3 font-medium">{benefit.title}</h3>
+                    <h3 className="heading-3 mb-3">{benefit.title}</h3>
+                    <p className="body-medium text-secondary">{benefit.description}</p>
                   </div>
-                  <p className="body-medium text-text-secondary">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -204,34 +216,46 @@ Interés en: ${service}
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="heading-1 mb-4">Planes que se adaptan a tu negocio</h2>
+            <p className="body-large text-secondary">
+              Elige el plan perfecto para llevar tu empresa al siguiente nivel
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="plans-grid">
             {Object.values(plans).map((plan, index) => (
-              <Card key={index} className={`voice-card hover-lift ${index === 1 ? 'accent-blue' : index === 2 ? 'accent-purple' : 'accent-orange'}`}>
-                <CardHeader>
-                  <CardTitle className="heading-2">{plan.name}</CardTitle>
-                  <div className="space-y-2">
-                    <div className="heading-1">{plan.monthlyPrice}</div>
-                    <div className="body-small text-text-muted">por mes</div>
-                    <div className="mono-text">{plan.yearlyPrice} anual</div>
+              <Card key={index} className={`plan-card luciana-card hover-lift ${plan.featured ? 'featured' : ''}`}>
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="heading-2 mb-2">{plan.name}</CardTitle>
+                  {plan.featured && (
+                    <div className="inline-flex items-center gap-2 bg-white bg-opacity-20 rounded-full px-3 py-1 mb-4">
+                      <TrendingUp className="w-4 h-4" />
+                      <span className="text-sm font-medium">Más Popular</span>
+                    </div>
+                  )}
+                  <div className="space-y-1">
+                    <div className="heading-1 font-bold">{plan.monthlyPrice}</div>
+                    <div className="body-small opacity-75">por mes</div>
+                    <div className="mono-text opacity-75">{plan.yearlyPrice} anual</div>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-4">
                   <ul className="space-y-3">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="body-small">{feature}</span>
+                        <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                        <span className="body-small flex-1">{feature}</span>
                       </li>
                     ))}
                     {plan.notIncluded.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 opacity-60">
-                        <X className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                        <span className="body-small line-through">{feature}</span>
+                      <li key={idx} className="flex items-start gap-3 opacity-50">
+                        <X className="w-5 h-5 text-error flex-shrink-0 mt-0.5" />
+                        <span className="body-small line-through flex-1">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button className="btn-primary w-full mt-6">
+                  <Button 
+                    className={`w-full mt-6 ${plan.featured ? 'bg-white text-primary hover:bg-opacity-90' : 'btn-primary'}`}
+                    onClick={() => document.querySelector('#contact-form').scrollIntoView({ behavior: 'smooth' })}
+                  >
                     Solicitar Plan {plan.name}
                   </Button>
                 </CardContent>
@@ -242,15 +266,18 @@ Interés en: ${service}
       </section>
 
       {/* Clients Section */}
-      <section className="pad-xl bg-bg-section">
+      <section className="pad-xl bg-section">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="heading-2 mb-8">Clientes que ya confían en Luciana AI</h2>
+            <h2 className="heading-2 mb-4">Clientes que ya confían en Luciana AI</h2>
+            <p className="body-medium text-secondary">
+              Empresas líderes que han transformado sus negocios con nuestra plataforma
+            </p>
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center opacity-60">
+          <div className="clients-grid">
             {clientLogos.map((client, index) => (
-              <div key={index} className="voice-card p-4 text-center min-h-20 flex items-center justify-center">
-                <span className="button-text text-text-muted">{client}</span>
+              <div key={index} className="luciana-card text-center p-6 min-h-20 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+                <span className="button-text text-muted font-semibold">{client}</span>
               </div>
             ))}
           </div>
@@ -258,104 +285,125 @@ Interés en: ${service}
       </section>
 
       {/* Contact Form Section */}
-      <section className="pad-2xl">
+      <section id="contact-form" className="pad-2xl">
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="heading-1 mb-4">¿Listo para llevar tu negocio al siguiente nivel?</h2>
+            <p className="body-large text-secondary">
+              Completa el formulario y nuestro equipo se pondrá en contacto contigo
+            </p>
           </div>
-          <Card className="voice-card accent-purple">
-            <CardContent className="p-8">
-              <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="name" className="body-medium font-medium">Nombre completo</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => handleInputChange('name', e.target.value)}
-                      className="mt-2"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="company" className="body-medium font-medium">Empresa</Label>
-                    <Input
-                      id="company"
-                      type="text"
-                      required
-                      value={formData.company}
-                      onChange={(e) => handleInputChange('company', e.target.value)}
-                      className="mt-2"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="phone" className="body-medium font-medium">Teléfono</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      className="mt-2"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="body-medium font-medium">Correo</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="mt-2"
-                    />
-                  </div>
+          <div className="contact-form">
+            <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <Label htmlFor="name" className="body-medium font-semibold text-primary mb-2 block">
+                    Nombre completo *
+                  </Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    className="w-full p-4 border border-input rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    placeholder="Ingresa tu nombre completo"
+                  />
                 </div>
                 <div>
-                  <Label htmlFor="service" className="body-medium font-medium">¿En qué te gustaría que Luciana te ayude?</Label>
-                  <Select required onValueChange={(value) => handleInputChange('service', value)}>
-                    <SelectTrigger className="mt-2">
-                      <SelectValue placeholder="Selecciona una opción" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ventas">Ventas</SelectItem>
-                      <SelectItem value="soporte">Soporte</SelectItem>
-                      <SelectItem value="servicio-al-cliente">Servicio al Cliente</SelectItem>
-                      <SelectItem value="otro">Otro</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Label htmlFor="company" className="body-medium font-semibold text-primary mb-2 block">
+                    Empresa *
+                  </Label>
+                  <Input
+                    id="company"
+                    type="text"
+                    required
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
+                    className="w-full p-4 border border-input rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    placeholder="Nombre de tu empresa"
+                  />
                 </div>
-                <Button type="submit" className="btn-primary w-full text-lg py-4">
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <Label htmlFor="phone" className="body-medium font-semibold text-primary mb-2 block">
+                    Teléfono *
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    className="w-full p-4 border border-input rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    placeholder="+502 1234-5678"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="email" className="body-medium font-semibold text-primary mb-2 block">
+                    Correo electrónico *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    className="w-full p-4 border border-input rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="service" className="body-medium font-semibold text-primary mb-2 block">
+                  ¿En qué te gustaría que Luciana te ayude? *
+                </Label>
+                <Select required onValueChange={(value) => handleInputChange('service', value)}>
+                  <SelectTrigger className="w-full p-4 border border-input rounded-lg focus:border-primary">
+                    <SelectValue placeholder="Selecciona una opción" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ventas">Ventas</SelectItem>
+                    <SelectItem value="soporte">Soporte</SelectItem>
+                    <SelectItem value="servicio-al-cliente">Servicio al Cliente</SelectItem>
+                    <SelectItem value="otro">Otro</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="text-center pt-4">
+                <Button type="submit" className="btn-primary text-lg px-8 py-4 w-full md:w-auto">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Solicita una demo ahora
                 </Button>
-              </form>
-            </CardContent>
-          </Card>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-bg-card border-t border-border-light pad-xl">
+      <footer className="footer">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_1e6338fa-b7e3-4bb7-9032-e8677dac9b3c/artifacts/u7i7fifj_5134DEC3-6D1F-4F67-BC95-15CABCEDF35B.png" 
-              alt="Luciana AI" 
-              className="logo h-8 w-auto mb-4 md:mb-0"
-            />
-            <div className="flex items-center space-x-6 text-center">
-              <div className="flex items-center space-x-2">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_1e6338fa-b7e3-4bb7-9032-e8677dac9b3c/artifacts/u7i7fifj_5134DEC3-6D1F-4F67-BC95-15CABCEDF35B.png" 
+                alt="Luciana AI" 
+                className="h-8 w-auto opacity-60"
+              />
+            </div>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-2 text-muted">
                 <Mail className="w-4 h-4" />
-                <span className="body-small">luciana@e689gt.com</span>
+                <span className="body-small">info@e689gt.com</span>
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border-light text-center">
-            <p className="caption">Copyright 2025 - Todos los derechos reservados</p>
+          <div className="mt-8 pt-8 border-t border-light text-center">
+            <p className="caption text-muted">
+              Copyright 2025 - Todos los derechos reservados - Luciana AI
+            </p>
           </div>
         </div>
       </footer>
