@@ -315,7 +315,7 @@ Gracias.`;
           <div className="text-center mb-12">
             <h2 className="heading-1 mb-4">¿Listo para llevar tu negocio al siguiente nivel?</h2>
             <p className="body-large text-secondary">
-              Completa el formulario y nuestro equipo se pondrá en contacto contigo
+              Completa el formulario para recibir información personalizada o contáctanos directamente
             </p>
           </div>
           <div className="contact-form">
