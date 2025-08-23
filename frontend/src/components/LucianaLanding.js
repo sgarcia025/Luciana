@@ -37,6 +37,28 @@ Interés en: ${service}
     window.open(whatsappURL, '_blank');
   };
 
+  const handleDemoRequest = () => {
+    const message = `¡Hola! Me interesa solicitar una demo de Luciana AI.
+
+¿Podrían contactarme para agendar una presentación de la plataforma?
+
+Gracias.`;
+    
+    const whatsappURL = `https://wa.me/50232251075?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  };
+
+  const handlePlanRequest = (planName) => {
+    const message = `¡Hola! Estoy interesado en el Plan ${planName} de Luciana AI.
+
+¿Podrían proporcionarme más información sobre este plan y ayudarme con el proceso de contratación?
+
+Gracias.`;
+    
+    const whatsappURL = `https://wa.me/50232251075?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   const benefits = [
     {
       icon: Bot,
