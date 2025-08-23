@@ -200,7 +200,7 @@ Gracias.`;
           <div className="fade-in-up stagger-3">
             <Button 
               className="btn-primary text-lg px-8 py-4"
-              onClick={() => document.querySelector('#contact-form').scrollIntoView({ behavior: 'smooth' })}
+              onClick={handleDemoRequest}
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               Solicita tu demo
