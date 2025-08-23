@@ -168,7 +168,10 @@ Gracias.`;
             />
           </div>
           <div className="nav-actions">
-            <Button className="btn-primary">
+            <Button 
+              className="btn-primary"
+              onClick={handleDemoRequest}
+            >
               Solicita tu Demo
             </Button>
           </div>
