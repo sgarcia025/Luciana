@@ -401,17 +401,6 @@ Gracias.`;
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Enviar información por WhatsApp
                 </Button>
-                <div className="mt-4">
-                  <p className="body-small text-muted mb-3">O solicita una demo directamente:</p>
-                  <Button 
-                    type="button" 
-                    className="btn-secondary text-lg px-8 py-4 w-full md:w-auto"
-                    onClick={handleDemoRequest}
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Demo rápida por WhatsApp
-                  </Button>
-                </div>
               </div>
             </form>
           </div>
